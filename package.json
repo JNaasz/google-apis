@@ -1,0 +1,31 @@
+{
+  "name": "jp_app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "app-vue",
+    "app-react"
+  ],
+  "scripts": {
+    "build-server": "tsc",
+    "server": "tsx ./server/index.ts",
+    "start:react": "npm --workspace app-react run start",
+    "start:vue": "npm --workspace app-vue run dev",
+    "start": "npm run start:react & npm run start:vue"
+  },
+  "main": "./api/server.js",
+  "dependencies": {
+    "core-js": "^3.8.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "fs-extra": "^11.2.0",
+    "googleapis": "^144.0.0",
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.1",
+    "typescript": "^5.5.3"
+  }
+}
