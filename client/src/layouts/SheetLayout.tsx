@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Toolbar, Typography } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
+
+import { SheetData, SheetItem } from '../../../types/globals';
+import SheetComponent from '../components/SheetComponent';
+import SheetForm from '../components/SheetForm';
 
 function SheetLayout() {
 	const [data, setData] = useState<SheetData | null>(null);
+	const [logTraining, setLogTraining] = useState<boolean>(false);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -16,13 +21,54 @@ function SheetLayout() {
 		}
 	}, []);
 
+	const sheetItems: SheetItem[] = data?.sheets[0]?.items || [];
+	const lastTraining = sheetItems.length > 0 ? sheetItems[0].Date : null;
+
+	const beginLog = () => {
+		setLogTraining(true);
+	}
+
+	const handleFormCancel = () => {
+		setLogTraining(false);
+	}
+
+	const handleFormSubmit = (formData: SheetItem) => {
+		console.log('form submitted', formData);
+		setLogTraining(false);
+	}
+
   return (
     <Box className="sheet-layout" sx={{ flexGrow: 1, padding: 5 }}>
-			New sheet data:
 			{data && (
           <div className="sheet-data">
-            <h2>Data Response</h2>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+						<Box 
+							className="title" 
+							sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', pb: 2 }}
+						>
+							{!lastTraining ? (
+								<Typography>No training logged yet.</Typography>
+							) : (
+								<Typography>Last Training on { lastTraining }</Typography>
+							)}
+
+							{!logTraining && (
+								<Button variant="contained" onClick={beginLog}>
+									Log Training
+								</Button>
+							)}							
+						</Box>
+            
+            <div className="sheet-items">
+							{!logTraining && sheetItems.map((item, index) => (
+								<SheetComponent key={index} sheetItem={item} />
+							))}
+						</div>
+
+						{logTraining && (
+							<div className="sheet-form">
+								<SheetForm onSubmit={handleFormSubmit} onCancel={handleFormCancel}/>
+							</div>
+						)}
           </div>
         )}
     </Box>
