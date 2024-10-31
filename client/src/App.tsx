@@ -1,6 +1,9 @@
 import './App.scss';
 import type { SheetData } from '../../types/globals';
 import LayoutTabs from './components/LayoutTabs';
+import SheetLayout from './layouts/SheetLayout';
+import FormsLayout from './layouts/FormsLayout';
+import MapsLayout from './layouts/MapsLayout';
 
 import React, { useEffect, useState } from 'react';
 import { AppBar, Container, Box, Toolbar, Typography } from '@mui/material';
@@ -39,15 +42,17 @@ function App() {
 
       {/* layout content */}
       <Box sx={{ p: 3 }}>
-        <Typography variant="h4">{layouts[layoutIndex]} Content</Typography>
-        {/* You can add more specific layout content here */}
 
+        {layouts[layoutIndex] === 'sheets' && (
+          <SheetLayout/>
+        )}
 
-        {layouts[layoutIndex] === 'sheets' && data && (
-          <div className="sheet-data">
-            <h2>Data Response</h2> {/* Add your title here */}
-            <pre>{JSON.stringify(data, null, 2)}</pre> {/* Using <pre> for better formatting */}
-          </div>
+        {layouts[layoutIndex] === 'maps' && (
+          <MapsLayout/>
+        )}
+
+        {layouts[layoutIndex] === 'forms' && (
+          <FormsLayout/>
         )}
       </Box>
     </Container>
