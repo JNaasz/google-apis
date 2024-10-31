@@ -17,6 +17,7 @@ declare global {
 		Comment: string;
 		[key: string]: string | number;
 	}
+
 }
 
 export type { SheetData, Sheet, SheetItem };
