@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import { FormControl, Box, TextField, Button, InputLabel } from '@mui/material';
 import { SheetItem } from '../../../types/globals';
 
 interface SheetFormProps {
   onSubmit: (formData: SheetItem) => void;
-	onCancel: () => void;
+  onCancel: () => void;
 }
 
 function SheetForm({ onSubmit, onCancel }: SheetFormProps) {
@@ -12,14 +12,16 @@ function SheetForm({ onSubmit, onCancel }: SheetFormProps) {
     Date: new Date().toISOString().split('T')[0],
     Duration: 0,
     Place: '',
-    Comment: ''
+    Comment: '',
   });
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: name === "Duration" ? Number(value) : value // Convert Duration to a number
+      [name]: name === 'Duration' ? Number(value) : value, // Convert Duration to a number
     }));
   };
 
@@ -29,7 +31,17 @@ function SheetForm({ onSubmit, onCancel }: SheetFormProps) {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        mt: 2,
+				backgroundColor: (theme) => theme.palette.background.paper,
+        padding: 3,
+        borderRadius: 1,
+        boxShadow: 1,
+      }}
+    >
       <FormControl fullWidth margin="normal">
         <TextField
           name="Date"
@@ -69,8 +81,12 @@ function SheetForm({ onSubmit, onCancel }: SheetFormProps) {
         />
       </FormControl>
       <div className="buttons">
-				<Button type="button" variant="outlined" onClick={onCancel}>Cancel</Button> 
-				<Button type="submit" variant="contained" sx={{ ml: 2 }}>Submit</Button>
+        <Button type="button" variant="outlined" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="submit" variant="contained" sx={{ ml: 2 }}>
+          Submit
+        </Button>
       </div>
     </Box>
   );
