@@ -7,11 +7,13 @@ interface SheetComponentProps {
 
 function SheetComponent({ sheetItem }: SheetComponentProps) {
 	return (
-		<Card className="sheetItem">
+		<Card className="sheetItem" sx={{ marginBottom: 2 }}>
 			<CardContent>
 				<p><span>{ sheetItem.Date }</span></p>
 				<p>Practiced for { sheetItem.Duration }min in the { sheetItem.Place }.</p>
-				<p v-if="sheetItem.Comment.length">{ sheetItem.Comment }.</p>
+				{sheetItem.Comment && (
+					<p>{sheetItem.Comment}.</p>
+				)}
 			</CardContent>
 		</Card>
 	);

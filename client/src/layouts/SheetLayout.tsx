@@ -19,7 +19,7 @@ function SheetLayout() {
 		if (!data) {
 			fetchData();
 		}
-	}, []);
+	});
 
 	const sheetItems: SheetItem[] = data?.sheets[0]?.items || [];
 	const lastTraining = sheetItems.length > 0 ? sheetItems[0].Date : null;
