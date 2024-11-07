@@ -2,12 +2,12 @@ import './App.scss';
 import LayoutTabs from './components/LayoutTabs';
 import SheetLayout from './layouts/SheetLayout';
 import FormsLayout from './layouts/FormsLayout';
-import MapsLayout from './layouts/MapsLayout';
+import CalendarLayout from './layouts/CalendarLayout';
 
 import React, { useState } from 'react';
-import { AppBar, Container, Box, Toolbar, Typography } from '@mui/material';
+import { Container, Box } from '@mui/material';
 
-const layouts: string[] = ['sheets', 'maps', 'forms'];
+const layouts: string[] = ['calendar', 'sheets', 'maps', 'forms'];
 
 function App() {
   const [layoutIndex, setLayoutIndex] = useState<number>(0);
@@ -18,30 +18,26 @@ function App() {
 
   return (
     <Container className="App">
-
       {/* layout tabs */}
       <Box sx={{ p: 5 }}>
         {/* <AppBar className="App-header" position="static"> */}
-          {/* <Toolbar> */}
-            <LayoutTabs layouts={layouts} layoutIndex={layoutIndex} onChange={handleTabChange} />
-          {/* </Toolbar> */}
+        {/* <Toolbar> */}
+        <LayoutTabs
+          layouts={layouts}
+          layoutIndex={layoutIndex}
+          onChange={handleTabChange}
+        />
+        {/* </Toolbar> */}
         {/* </AppBar> */}
       </Box>
 
       {/* layout content */}
-      <Box sx={{ p: 3, flexGrow: 1 }}>
+      <Box sx={{ p: 3 }}>
+        {layouts[layoutIndex] === 'calendar' && <CalendarLayout />}
 
-        {layouts[layoutIndex] === 'sheets' && (
-          <SheetLayout/>
-        )}
+        {layouts[layoutIndex] === 'sheets' && <SheetLayout />}
 
-        {layouts[layoutIndex] === 'maps' && (
-          <MapsLayout/>
-        )}
-
-        {layouts[layoutIndex] === 'forms' && (
-          <FormsLayout/>
-        )}
+        {layouts[layoutIndex] === 'forms' && <FormsLayout />}
       </Box>
     </Container>
   );
