@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 import { GoogleAuth } from 'google-auth-library';
 import credentials from '../../../secret/dtrw-credentials';
+import type { CalEvent } from '../../../types/globals.js';
 
 const auth = new GoogleAuth({
 	credentials,
@@ -8,7 +9,13 @@ const auth = new GoogleAuth({
 });
 const calendar = google.calendar({ version: 'v3', auth });
 
-async function getCalendarEvents() {
+const CALENDAR_ID = '0de52els08rqabtjushrhgpbjo@group.calendar.google.com';
+
+/**
+ * Gets the events from a specified google calendar
+ * @returns {Promise<CalEvent[] | []>}
+ */
+async function getCalendarEvents(): Promise<CalEvent[]> {
   const response = await calendar.events.list({
     calendarId: CALENDAR_ID,
     timeMin: new Date().toISOString(), // Only future events
@@ -17,14 +24,18 @@ async function getCalendarEvents() {
     orderBy: 'startTime',
   });
 
-  const events = response.data.items;
+  const events: CalEvent[] = response.data.items || [];
 
 	return events;
 }
 
-async function getNextEvent() {
+/**
+ * returns the first event that has a locaiton
+ * @returns {Promise<CalEvent | null>}
+ */
+async function getNextEvent(): Promise<CalEvent | null> {
 	const events = await getCalendarEvents();
-	const nextEvent = events.find(event => event.hasOwnProperty('location'));
+	const nextEvent = events?.find(event => event.hasOwnProperty('location'));
 	return nextEvent || null;
 }
 

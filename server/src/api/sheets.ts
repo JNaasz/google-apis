@@ -1,8 +1,6 @@
 import { google } from 'googleapis';
 import { GaxiosResponse } from 'gaxios';
 
-
-
 import credentials from '../../../secret/jp-credentials.js';
 import { formatSheet, getSheetRange } from '../lib/util.js';
 import type { SheetData } from '../../../types/globals.js';

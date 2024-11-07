@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Accordion,
   AccordionDetails,
@@ -6,6 +6,8 @@ import {
   Box,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CalendarEvent from '../components/CalendarEvent';
+import endpoints from '../config';
 
 const iframeUrl = process.env.REACT_APP_IFRAME_URL;
 
@@ -17,6 +19,19 @@ const iframeUrl = process.env.REACT_APP_IFRAME_URL;
 
 function CalendarLayout() {
   const [expanded, setExpanded] = useState<string | false>(false);
+  const [events, setEvents] = useState<CalEvent[] | null>(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(endpoints.calendar); // Adjust endpoint as needed
+      const resJson: CalEvent[] = await response.json();
+      setEvents(resJson);
+    };
+
+    if (!events) {
+      fetchData();
+    }
+  });
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
@@ -37,12 +52,7 @@ function CalendarLayout() {
           Calendar as an Iframe
         </AccordionSummary>
         <AccordionDetails>
-          <iframe 
-            title="googleMap"
-            src={iframeUrl}
-            width="800"
-            height="600"
-          />
+          <iframe title="googleMap" src={iframeUrl} width="800" height="600" />
         </AccordionDetails>
       </Accordion>
 
@@ -58,7 +68,10 @@ function CalendarLayout() {
           Calendar as a List
         </AccordionSummary>
         <AccordionDetails>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          {events &&
+            events.map((event, index) => (
+              <CalendarEvent key={index} event={event} />
+            ))}
         </AccordionDetails>
       </Accordion>
     </Box>
