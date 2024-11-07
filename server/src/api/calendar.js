@@ -29,7 +29,6 @@ async function getNextEvent() {
 }
 
 export {
-	getCalendar,
 	getCalendarEvents,
 	getNextEvent,
 }
