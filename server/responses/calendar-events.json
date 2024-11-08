@@ -1,0 +1,336 @@
+[
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683279870000\"",
+		"id": "0e403vbipim1kjfq8ohiao828g_20241107",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MGU0MDN2YmlwaW0xa2pmcThvaGlhbzgyOGdfMjAyNDExMDcgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:20:39.000Z",
+		"updated": "2024-11-05T21:20:39.935Z",
+		"summary": "Heidi Cousino's Birthday",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"date": "2024-11-07"
+		},
+		"end": {
+			"date": "2024-11-08"
+		},
+		"recurringEventId": "0e403vbipim1kjfq8ohiao828g",
+		"originalStartTime": {
+			"date": "2024-11-07"
+		},
+		"transparency": "transparent",
+		"iCalUID": "0e403vbipim1kjfq8ohiao828g@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": false
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3460301071196000\"",
+		"id": "7hkaa610pglcfnlrlbt8s6c13t",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=N2hrYWE2MTBwZ2xjZm5scmxidDhzNmMxM3QgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-10-28T21:22:15.000Z",
+		"updated": "2024-10-28T21:22:15.598Z",
+		"summary": "PJ's Lager House",
+		"location": "Lager House, 1254 Michigan Ave, Detroit, MI 48226, USA",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-11-12T18:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-11-12T21:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "7hkaa610pglcfnlrlbt8s6c13t@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683231816000\"",
+		"id": "3nrsvgeh4jee0jasbbmdnoij8h",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=M25yc3ZnZWg0amVlMGphc2JibWRub2lqOGggMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:20:15.000Z",
+		"updated": "2024-11-05T21:20:15.908Z",
+		"summary": "Elephant & Company",
+		"location": "Elephant & Co. Detroit, 456 Charlotte St, Detroit, MI 48201, USA",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-11-19T18:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-11-19T21:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "3nrsvgeh4jee0jasbbmdnoij8h@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683008952000\"",
+		"id": "2b2phrve9etj8q4i8tba21cbi9_20241123",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MmIycGhydmU5ZXRqOHE0aTh0YmEyMWNiaTlfMjAyNDExMjMgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:18:24.000Z",
+		"updated": "2024-11-05T21:18:24.476Z",
+		"summary": "Sue Sidun's Birthday",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"date": "2024-11-23"
+		},
+		"end": {
+			"date": "2024-11-24"
+		},
+		"recurringEventId": "2b2phrve9etj8q4i8tba21cbi9",
+		"originalStartTime": {
+			"date": "2024-11-23"
+		},
+		"transparency": "transparent",
+		"iCalUID": "2b2phrve9etj8q4i8tba21cbi9@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": false
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683245764000\"",
+		"id": "1cnkma0kp05jokug73j06am18c",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MWNua21hMGtwMDVqb2t1ZzczajA2YW0xOGMgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:20:22.000Z",
+		"updated": "2024-11-05T21:20:22.882Z",
+		"summary": "Honest Johns",
+		"location": "Honest John's, 488 Selden St, Detroit, MI 48201, USA",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-11-26T18:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-11-26T21:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "1cnkma0kp05jokug73j06am18c@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683193878000\"",
+		"id": "3gc9am2klosl8pqkj6bcj2svuv_20241129",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=M2djOWFtMmtsb3NsOHBxa2o2YmNqMnN2dXZfMjAyNDExMjkgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:19:56.000Z",
+		"updated": "2024-11-05T21:19:56.939Z",
+		"summary": "Shane Angove's Birthday",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"date": "2024-11-29"
+		},
+		"end": {
+			"date": "2024-11-30"
+		},
+		"recurringEventId": "3gc9am2klosl8pqkj6bcj2svuv",
+		"originalStartTime": {
+			"date": "2024-11-29"
+		},
+		"iCalUID": "3gc9am2klosl8pqkj6bcj2svuv@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": false
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3457830247188000\"",
+		"id": "3cvc7ul211h9uqab2dtdcek780",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=M2N2Yzd1bDIxMWg5dXFhYjJkdGRjZWs3ODAgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-10-14T14:12:03.000Z",
+		"updated": "2024-10-14T14:12:03.594Z",
+		"summary": "Germany",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-12-03T19:30:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-12-12T18:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "3cvc7ul211h9uqab2dtdcek780@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3457827412370000\"",
+		"id": "2s5othb9rg932g83juqke9k5fj",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MnM1b3RoYjlyZzkzMmc4M2p1cWtlOWs1ZmogMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-10-14T13:48:26.000Z",
+		"updated": "2024-10-14T13:48:26.185Z",
+		"summary": "DTRW Holiday Party",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-12-14T18:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-12-14T19:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "2s5othb9rg932g83juqke9k5fj@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3457827474622000\"",
+		"id": "19jjpek1kk971r1gqgkkplnnjk",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MTlqanBlazFrazk3MXIxZ3Fna2twbG5uamsgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-10-14T13:48:57.000Z",
+		"updated": "2024-10-14T13:48:57.311Z",
+		"summary": "Family Christmas",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"dateTime": "2024-12-21T15:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"end": {
+			"dateTime": "2024-12-21T16:00:00-05:00",
+			"timeZone": "America/New_York"
+		},
+		"iCalUID": "19jjpek1kk971r1gqgkkplnnjk@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": true
+		},
+		"eventType": "default"
+	},
+	{
+		"kind": "calendar#event",
+		"etag": "\"3461683279870000\"",
+		"id": "0e403vbipim1kjfq8ohiao828g_20251107",
+		"status": "confirmed",
+		"htmlLink": "https://www.google.com/calendar/event?eid=MGU0MDN2YmlwaW0xa2pmcThvaGlhbzgyOGdfMjAyNTExMDcgMGRlNTJlbHMwOHJxYWJ0anVzaHJoZ3Biam9AZw",
+		"created": "2024-11-05T21:20:39.000Z",
+		"updated": "2024-11-05T21:20:39.935Z",
+		"summary": "Heidi Cousino's Birthday",
+		"creator": {
+			"email": "naasz.jl@gmail.com"
+		},
+		"organizer": {
+			"email": "0de52els08rqabtjushrhgpbjo@group.calendar.google.com",
+			"displayName": "Downtown Runners & Walkers",
+			"self": true
+		},
+		"start": {
+			"date": "2025-11-07"
+		},
+		"end": {
+			"date": "2025-11-08"
+		},
+		"recurringEventId": "0e403vbipim1kjfq8ohiao828g",
+		"originalStartTime": {
+			"date": "2025-11-07"
+		},
+		"transparency": "transparent",
+		"iCalUID": "0e403vbipim1kjfq8ohiao828g@google.com",
+		"sequence": 0,
+		"reminders": {
+			"useDefault": false
+		},
+		"eventType": "default"
+	}
+]
