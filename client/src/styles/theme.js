@@ -9,6 +9,9 @@ const theme = createTheme({
     secondary: {
       main: '#7C72FF', // Your secondary color
     },
+    background: {
+      paper: 'rgb(240, 246, 252)',
+    }
   },
   typography: {
     // Customize typography options here
