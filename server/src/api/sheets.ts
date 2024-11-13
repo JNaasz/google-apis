@@ -1,9 +1,9 @@
 import { google } from 'googleapis';
 import { GaxiosResponse } from 'gaxios';
-
-import credentials from '../../../secret/jp-credentials.js';
+import credentials from 'jp-credentials';
 import { formatSheet, getSheetRange } from '../lib/util.js';
 import type { SheetData } from '../../../types/globals.js';
+import type { sheets_v4 } from 'googleapis';
 
 // Authenticate using a service account
 const auth = new google.auth.GoogleAuth({
@@ -100,8 +100,8 @@ async function getSheetBatch(spreadsheetId: string, ranges: string[]): Promise<S
     }
 
     if (response.data.valueRanges.length) {
-      response.data.valueRanges.forEach(vRange => {
-        responseData.sheets.push(formatSheet(vRange));
+      response.data.valueRanges.forEach((vRange: sheets_v4.Schema$ValueRange) => {
+        responseData.sheets.push(formatSheet(vRange as { range?: string; values: string[][] }));
       });
     }
 

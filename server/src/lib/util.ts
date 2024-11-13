@@ -22,14 +22,14 @@ function getSheetRange(pages: string | null): string[] {
  * @param {ValueRange} data
  * @returns {Sheet}
  */
-function formatSheet({ range, values }: { range: string; values: string[][] }): Sheet {
+function formatSheet({ range, values }: { range?: string | undefined; values: string[][] }): Sheet {
   const sheet: Sheet = {
     name: "",
     items: []
   };
 
   // Extract the name from the range by splitting at the "!"
-  sheet.name = range.split("!")[0];
+  sheet.name = range?.split("!")[0] || '';
 
   const [headers] = values.slice(0, 1);
   const items: SheetItem[] = values.slice(1).map((row) => buildSheetItem(row, headers));

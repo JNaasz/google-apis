@@ -1,6 +1,6 @@
 import { google } from 'googleapis';
 import { GoogleAuth } from 'google-auth-library';
-import credentials from '../../../secret/dtrw-credentials';
+import credentials from 'dtrw-credentials';
 import type { CalEvent } from '../../../types/globals.js';
 
 const auth = new GoogleAuth({

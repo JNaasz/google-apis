@@ -4,14 +4,10 @@ import { getCalendarEvents, getNextEvent } from './api/calendar';
 
 import express from 'express';
 import cors from 'cors';
-// import path from 'path';
-// import { fileURLToPath } from 'url';
-// import { dirname } from 'path';
 
 const app = express();
-const port = process.env.PORT || 2000;
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = dirname(__filename);
+const port = Number(process.env.PORT) || 2000;
+const hostname = '0.0.0.0';
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
@@ -62,6 +58,6 @@ app.get('/calendar-next-event', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`App is now listening on port ${port}`);
+app.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
 });
