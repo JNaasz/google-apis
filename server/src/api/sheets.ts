@@ -1,8 +1,8 @@
 import { google } from 'googleapis';
 import { GaxiosResponse } from 'gaxios';
-import credentials from 'jp-credentials';
-import { formatSheet, getSheetRange } from '../lib/util.js';
-import type { SheetData } from '../../../types/globals.js';
+import credentials from '../secret/jp-credentials';
+import { formatSheet, getSheetRange } from '../lib/util';
+import type { SheetData } from '../../../types/globals';
 import type { sheets_v4 } from 'googleapis';
 
 // Authenticate using a service account

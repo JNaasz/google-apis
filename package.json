@@ -1,0 +1,20 @@
+{
+  "name": "google_apis",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:client": "tsc -p client/tsconfig.client.json && esbuild client/dist/index.js --outfile=client/dist/bundle.js --bundle --format=esm",
+    "build:server": "tsc -p server/tsconfig.server.json && esbuild server/dist/index.js --outfile=server/dist/bundle.js --bundle --format=esm --external:express --external:cors --external:googleapis --external:google-auth-library",
+    "build": "npm run build:client && npm run build:server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "esbuild": "^0.24.0",
+    "esbuild-sass-plugin": "^3.3.1",
+    "typescript": "^5.6.3"
+  }
+}

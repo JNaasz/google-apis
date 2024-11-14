@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "build-server": "tsc",
-    "start": "tsx ./src/server.ts"
+    "start": "tsx ./src/index.ts"
   },
-  "main": "./src/server.ts",
+  "main": "./src/index.ts",
   "dependencies": {
     "core-js": "^3.8.3",
     "cors": "^2.8.5",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
     "tsx": "^4.19.1",
     "typescript": "^5.5.3"
   }
