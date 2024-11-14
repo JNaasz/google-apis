@@ -6,7 +6,7 @@ import {
   Box,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import CalendarEvent from '../components/CalendarEvent';
+import CalendarEvent from '../components/CalendarEvent.tsx';
 import endpoints from '../config';
 
 const iframeUrl = process.env.REACT_APP_IFRAME_URL;
@@ -14,7 +14,6 @@ const iframeUrl = process.env.REACT_APP_IFRAME_URL;
 // full calendar
 // calendar list
 // filter calendar list
-
 // accordian doc: http://localhost:3000/material-ui/react-accordion/#introduction
 
 function CalendarLayout() {

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build:client": "tsc -p client/tsconfig.client.json && esbuild client/dist/index.js --outfile=client/dist/bundle.js --bundle --format=esm",
+    "build:client": "npm --prefix ./client run build",
     "build:server": "tsc -p server/tsconfig.server.json && esbuild server/dist/index.js --outfile=server/dist/bundle.js --bundle --format=esm --external:express --external:cors --external:googleapis --external:google-auth-library",
     "build": "npm run build:client && npm run build:server"
   },
