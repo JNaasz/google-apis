@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "typeRoots": ["./node_modules/@types", "./types"]
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

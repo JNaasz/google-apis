@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormControl, Box, TextField, Button, InputLabel } from '@mui/material';
+import { FormControl, Box, TextField, Button } from '@mui/material';
 import { SheetItem } from '../../../types/globals';
 
 interface SheetFormProps {

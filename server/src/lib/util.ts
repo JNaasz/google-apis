@@ -1,5 +1,5 @@
-import sheetConfig from './config.js';
-import type { Sheet, SheetItem } from '../../../types/globals.js';
+import sheetConfig from './config';
+import type { Sheet, SheetItem } from '../../../types/globals';
 
 /**
  * builds an array of sheed ids for fetch request

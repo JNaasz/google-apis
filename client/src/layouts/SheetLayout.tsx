@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 
 import { SheetData, SheetItem } from '../../../types/globals';
-import SheetComponent from '../components/SheetComponent';
-import SheetForm from '../components/SheetForm';
+import SheetComponent from '../components/SheetComponent.tsx';
+import SheetForm from '../components/SheetForm.tsx';
 
 function SheetLayout() {
 	const [data, setData] = useState<SheetData | null>(null);
@@ -11,7 +11,7 @@ function SheetLayout() {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const response = await fetch('http://localhost:2000/sheet-data'); // Adjust endpoint as needed
+			const response = await fetch('http://localhost:2000/sheet-data');
 			const resJson: SheetData = await response.json();
 			setData(resJson);
 		};

@@ -1,0 +1,27 @@
+{
+  "name": "google_apis",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build:client": "npm --prefix ./client run build",
+    "build:server": "tsc -p server/tsconfig.server.json && esbuild server/dist/index.js --outfile=server/dist/bundle.js --bundle --format=esm --external:express --external:cors --external:googleapis --external:google-auth-library",
+    "build": "npm run build:client && npm run build:server",
+    "start:client:dev": "npm run start --prefix client",
+    "start:server:dev": "npm run start --prefix server",
+    "start:dev": "concurrently \"npm run start:server:dev\" \"npm run start:client:dev\"",
+    "start:client:prod": "npm run start --prefix client",
+    "start:server:prod": "npm run start --prefix server",
+    "start:prod": "concurrently \"npm run start:server:dev\" \"npm run start:client:dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "concurrently": "^9.1.0",
+    "esbuild": "^0.24.0",
+    "esbuild-sass-plugin": "^3.3.1",
+    "typescript": "^5.6.3"
+  }
+}

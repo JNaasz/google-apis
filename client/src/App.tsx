@@ -1,8 +1,8 @@
-import './App.scss';
-import LayoutTabs from './components/LayoutTabs';
-import SheetLayout from './layouts/SheetLayout';
-import FormsLayout from './layouts/FormsLayout';
-import CalendarLayout from './layouts/CalendarLayout';
+import './styles/App.scss';
+import LayoutTabs from './components/LayoutTabs.tsx';
+import SheetLayout from './layouts/SheetLayout.tsx';
+import FormsLayout from './layouts/FormsLayout.tsx';
+import CalendarLayout from './layouts/CalendarLayout.tsx';
 
 import React, { useState } from 'react';
 import { Container, Box } from '@mui/material';
