@@ -4,8 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build-server": "tsc",
-    "start": "tsx ./src/index.ts"
+    "build": "tsc -p tsconfig.server.json && esbuild dist/index.js --outfile=dist/bundle.js --bundle --format=esm --external:express --external:cors --external:googleapis --external:google-auth-library",
+    "start": "tsx ./src/index.ts",
+    "serve": "node dist/bundle.js",
+    "install:prod": "npm ci --only=production",
+    "start:prod": "npm install && npm run build && npm run serve"
   },
   "main": "./src/index.ts",
   "dependencies": {
