@@ -9,24 +9,30 @@ const auth = new GoogleAuth({
 });
 const calendar = google.calendar({ version: 'v3', auth });
 
-const CALENDAR_ID = '0de52els08rqabtjushrhgpbjo@group.calendar.google.com';
+// const CALENDAR_ID = '0de52els08rqabtjushrhgpbjo@group.calendar.google.com';
+const CALENDAR_ID = 'detroitdtrw@gmail.com';
 
 /**
  * Gets the events from a specified google calendar
  * @returns {Promise<CalEvent[] | []>}
  */
 async function getCalendarEvents(): Promise<CalEvent[]> {
-  const response = await calendar.events.list({
-    calendarId: CALENDAR_ID,
-    timeMin: new Date().toISOString(), // Only future events
-    maxResults: 10, // Fetch upcoming events
-    singleEvents: true,
-    orderBy: 'startTime',
-  });
+	try {
+		const response = await calendar.events.list({
+			calendarId: CALENDAR_ID,
+			timeMin: new Date().toISOString(), // Only future events
+			maxResults: 10, // Fetch upcoming events
+			singleEvents: true,
+			orderBy: 'startTime',
+		});
 
-  const events: CalEvent[] = response.data.items || [];
+		const events: CalEvent[] = response.data.items || [];
 
-	return events;
+		return events;
+	} catch (error) {
+    console.error(error);
+    throw error;
+	}
 }
 
 /**
@@ -34,11 +40,15 @@ async function getCalendarEvents(): Promise<CalEvent[]> {
  * @returns {Promise<CalEvent | null>}
  */
 async function getNextEvent(): Promise<CalEvent | null> {
-	const events = await getCalendarEvents();
-	const nextEvent = events?.find(event => event.hasOwnProperty('location'));
-	return nextEvent || null;
+  try {
+    const events = await getCalendarEvents();
+    const nextEvent = events?.find(event => event.hasOwnProperty('location'));
+    return nextEvent || null;
+  } catch (error) {
+    console.error('Error fetching the next event:', error);
+    return null; // or you could rethrow the error if you want it to propagate
+  }
 }
-
 export {
 	getCalendarEvents,
 	getNextEvent,
