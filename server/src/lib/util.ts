@@ -51,8 +51,18 @@ function buildSheetItem(row: string[], headers: string[]): SheetItem {
   }, {} as SheetItem);
 }
 
+/**
+ * get the range for the sheet headers
+ * @param {string} page 
+ * @returns {string} // sheet range
+ */
+function getSheetHeadersRange(page: string) {
+	return `${sheetConfig[page].sheetName}!1:1`;
+}
+
 export {
 	formatSheet,
 	buildSheetItem,
 	getSheetRange,
+  getSheetHeadersRange,
 }
