@@ -31,8 +31,6 @@ function formatGetResponse(response: GaxiosResponse, spreadsheetId: string): She
     sheets: []
   }
 
-  console.log('response.data:', response.data);
-
   if (response.data.valueRanges?.length) {
     response.data.valueRanges.forEach((vRange: sheets_v4.Schema$ValueRange) => {
       responseData.sheets.push(formatSheet(vRange as { range?: string; values: string[][] }));

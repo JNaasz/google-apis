@@ -11,8 +11,9 @@ const hostname = '0.0.0.0';
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
+app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3001' // Allow requests only from this origin
+  origin: '*', // 'http://localhost:3001' // Allow requests only from this origin
 }));
 
 // app.get('/', (req, res) => {
@@ -44,7 +45,7 @@ app.post('/update-sheet-data', async (req, res) => {
     const response = await setSheetData('dog', sheetItem);
     res.send(response);
   } catch (error) {
-    res.status(500).send('Error fetching headers');
+    res.status(500).send('Error updating sheet');
   }
 });
 

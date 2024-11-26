@@ -21,7 +21,7 @@ const auth = new google.auth.GoogleAuth({
 const sheets = google.sheets({ version: 'v4', auth });
 const { sheetId } = credentials;
 
-interface Response {
+interface PostResponse {
   success: boolean;
   updatedCells?: number;
   error?: string;
@@ -54,9 +54,9 @@ export async function getSheetData(rangeKeys: string | null, spreadsheetId: stri
 * @param {string} page
 * @param {SheetItem} sheetItem
 * @param {string|null} spreadsheetId
-* @returns {Promise<Response>}
+* @returns {Promise<PostResponse>}
 */
-export async function setSheetData(page: string, sheetItem: SheetItem, spreadsheetId: string = sheetId): Promise<Response> {
+export async function setSheetData(page: string, sheetItem: SheetItem, spreadsheetId: string = sheetId): Promise<PostResponse> {
   // determine if we need to call to get getSheetHeaders
   const headers = await getSheetHeaders(page);
   const range = getSheetHeadersRange(page);
@@ -147,9 +147,9 @@ async function getSheetHeaders(page: string, spreadsheetId: string = sheetId): P
  * add data as a new entry
  * @param {string} spreadsheetId
  * @param {SheetData} data
- * @returns {Promise<Response>}
+ * @returns {Promise<PostResponse>}
  */
-async function append(data: string[], range: string, spreadsheetId: string): Promise<Response> {
+async function append(data: string[], range: string, spreadsheetId: string): Promise<PostResponse> {
   const requestBody = {
     values: [data], // Row data to append
   };
