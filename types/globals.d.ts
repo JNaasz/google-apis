@@ -6,6 +6,7 @@ declare global {
 	}
 	
 	interface Sheet {
+		// TODO: add sheet headers to Sheet
 		name: string;
 		items: SheetItem[];
 	}

@@ -1,5 +1,7 @@
 import sheetConfig from './config';
 import type { Sheet, SheetItem } from '../../../types/globals';
+import { GaxiosResponse } from 'gaxios';
+import type { sheets_v4 } from 'googleapis';
 
 /**
  * builds an array of sheed ids for fetch request
@@ -15,6 +17,31 @@ function getSheetRange(pages: string | null): string[] {
 		.map(config => `${config.sheetName}!${config.columns}`);
 
 	return sheetRange;
+}
+
+/**
+ * formats the sheet get response to SheetData
+ * @param {GaxiosResponse} response 
+ * @param {string} spreadsheetId 
+ * @returns {SheetData}
+ */
+function formatGetResponse(response: GaxiosResponse, spreadsheetId: string): SheetData {
+  const responseData: SheetData = {
+    spreadsheetId,
+    sheets: []
+  }
+
+  console.log('response.data:', response.data);
+
+  if (response.data.valueRanges?.length) {
+    response.data.valueRanges.forEach((vRange: sheets_v4.Schema$ValueRange) => {
+      responseData.sheets.push(formatSheet(vRange as { range?: string; values: string[][] }));
+    });
+  } else if (response.data.values?.length) {
+    responseData.sheets.push(formatSheet(response.data));
+  }
+
+  return responseData;
 }
 
 /**
@@ -56,13 +83,48 @@ function buildSheetItem(row: string[], headers: string[]): SheetItem {
  * @param {string} page 
  * @returns {string} // sheet range
  */
-function getSheetHeadersRange(page: string) {
+function getSheetHeadersRange(page: string): string {
 	return `${sheetConfig[page].sheetName}!1:1`;
 }
 
+/**
+ * set the sheet headers to config
+ * @param {string} page 
+ * @param {string} headers
+ * @returns {void}
+ */
+function setStoredHeaders(page: string, headers: string[]): void {
+	sheetConfig[page].headers = headers;
+}
+
+/**
+ * return the sheet headers from config
+ * @param {string} page 
+ * @returns {string[] | null}
+ */
+function getStoredHeaders(page: string): string[] | null {
+	return sheetConfig[page].headers;
+}
+
+/**
+ * converts object values to an ordered array
+ * @param {SheetItem} sheetItem 
+ * @param {string[]} headers 
+ * @returns {string[]}
+ */
+function formatDataForInsert(sheetItem: SheetItem, headers: string[]): string[] {
+  return headers.map(h => {
+    if (sheetItem[h]) return sheetItem[h].toString()
+    else return '';
+  });
+}
+
 export {
-	formatSheet,
+  formatGetResponse,
 	buildSheetItem,
 	getSheetRange,
   getSheetHeadersRange,
+  setStoredHeaders,
+  getStoredHeaders,
+  formatDataForInsert,
 }

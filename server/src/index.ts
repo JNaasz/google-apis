@@ -1,4 +1,4 @@
-import { getSheetData } from './api/sheets';
+import { getSheetData, setSheetData } from './api/sheets';
 import type { SheetData } from '../../types/globals';
 import { getCalendarEvents, getNextEvent } from './api/calendar';
 
@@ -38,6 +38,16 @@ app.get('/sheet-data/:type', async (req, res) => {
   }
 });
 
+app.post('/update-sheet-data', async (req, res) => {
+  try {
+    const sheetItem: SheetItem = req.body.data;
+    const response = await setSheetData('dog', sheetItem);
+    res.send(response);
+  } catch (error) {
+    res.status(500).send('Error fetching headers');
+  }
+});
+
 app.get('/calendar-events', async (req, res) => {
   console.log('lets get the calendar events');
   try {
@@ -55,6 +65,23 @@ app.get('/calendar-next-event', async (req, res) => {
     res.send(response);
   } catch (error) {
     res.status(500).send('Error fetching events from Google Calendar');
+  }
+});
+
+app.get('/test', async (req, res) => {
+  try {
+   
+    const sheetItem: SheetItem = {
+      Date: '11/25/2024',
+      Duration: 10,
+      Place: 'Parlor, Living Room and Kitchen',
+      Comment: 'doing very good with stay and find it',
+    }
+
+    const response = await setSheetData('dog', sheetItem);
+    res.send(response);
+  } catch (error) {
+    res.status(500).send('Error fetching headers');
   }
 });
 
