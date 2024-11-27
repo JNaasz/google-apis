@@ -11,7 +11,7 @@ interface SheetConfigMap {
 const sheetConfigMap: SheetConfigMap = {
   "dog": {
     sheetName: "Sheet1",
-    columns: "A1:D5",
+    columns: "A1:Z100", // can adjust 100 to include more rows. If left as 'Z' it will default to Z995 or smth
     headers: null,
   },
   "plants": {

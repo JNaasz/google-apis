@@ -41,7 +41,12 @@ export async function getSheetData(rangeKeys: string | null, spreadsheetId: stri
       ? getSheet(spreadsheetId, range[0])
       : getSheetBatch(spreadsheetId, range)
     );
-    return formatGetResponse(response, spreadsheetId);
+
+    const sheetData: SheetData = formatGetResponse(response, spreadsheetId);
+    // store the headers for future updates
+    sheetData.sheets.forEach(sheet => setStoredHeaders(sheet.name, sheet.headers));
+
+    return sheetData;
   } catch (error) {
     console.error(error);
     throw error;
@@ -71,7 +76,7 @@ export async function setSheetData(page: string, sheetItem: SheetItem, spreadshe
  * @param {string} range 
  * @returns {Promise<GaxiosResponse>}
  */
-async function getSheet(spreadsheetId: string, range: string): Promise<GaxiosResponse> {
+export async function getSheet(spreadsheetId: string, range: string): Promise<GaxiosResponse> {
   try {
     const response: GaxiosResponse = await new Promise((resolve, reject) => {
       sheets.spreadsheets.values.get(

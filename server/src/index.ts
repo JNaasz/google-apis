@@ -1,4 +1,4 @@
-import { getSheetData, setSheetData } from './api/sheets';
+import { getSheetData, setSheetData, getSheet } from './api/sheets';
 import type { SheetData } from '../../types/globals';
 import { getCalendarEvents, getNextEvent } from './api/calendar';
 
@@ -77,9 +77,10 @@ app.get('/test', async (req, res) => {
       Duration: 10,
       Place: 'Parlor, Living Room and Kitchen',
       Comment: 'doing very good with stay and find it',
+      Person: 'Jen',
     }
 
-    const response = await setSheetData('dog', sheetItem);
+    const response = await getSheet('1sWtSyJbEAbkMJHB7JFs7p9UiUoY7ekECM2Eos-BvDgI', 'Sheet1!A1:Z100');
     res.send(response);
   } catch (error) {
     res.status(500).send('Error fetching headers');

@@ -19,7 +19,7 @@ function App() {
   return (
     <Container className="App">
       {/* layout tabs */}
-      <Box sx={{ p: 5 }}>
+      <Box className="fixed" sx={{ p: 5 }}>
         {/* <AppBar className="App-header" position="static"> */}
         {/* <Toolbar> */}
         <LayoutTabs
@@ -32,7 +32,7 @@ function App() {
       </Box>
 
       {/* layout content */}
-      <Box sx={{ p: 3 }}>
+      <Box className="grow" sx={{ p: 3 }}>
         {layouts[layoutIndex] === 'calendar' && <CalendarLayout />}
 
         {layouts[layoutIndex] === 'sheets' && <SheetLayout />}

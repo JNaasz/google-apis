@@ -9,6 +9,7 @@ declare global {
 		// TODO: add sheet headers to Sheet
 		name: string;
 		items: SheetItem[];
+		headers: string[];
 	}
 	
 	interface SheetItem {
@@ -16,6 +17,7 @@ declare global {
 		Duration: number;
 		Place: string;
 		Comment: string;
+		Person: string;
 		[key: string]: string | number;
 	}
 

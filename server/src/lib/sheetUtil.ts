@@ -50,7 +50,8 @@ function formatGetResponse(response: GaxiosResponse, spreadsheetId: string): She
 function formatSheet({ range, values }: { range?: string | undefined; values: string[][] }): Sheet {
   const sheet: Sheet = {
     name: "",
-    items: []
+    items: [],
+    headers: [],
   };
 
   // Extract the name from the range by splitting at the "!"
@@ -60,6 +61,7 @@ function formatSheet({ range, values }: { range?: string | undefined; values: st
   const items: SheetItem[] = values.slice(1).map((row) => buildSheetItem(row, headers));
 
   sheet.items = items;
+  sheet.headers.push(...headers);
   return sheet;
 }
 
@@ -92,7 +94,12 @@ function getSheetHeadersRange(page: string): string {
  * @returns {void}
  */
 function setStoredHeaders(page: string, headers: string[]): void {
-	sheetConfig[page].headers = headers;
+  if (!sheetConfig[page]) {
+    const configSheet = Object.values(sheetConfig).find(c => c.sheetName === page);
+    page = configSheet?.sheetName || '';
+  }
+	
+  if (sheetConfig[page]) sheetConfig[page].headers = headers;
 }
 
 /**
