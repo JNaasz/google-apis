@@ -9,6 +9,14 @@
   color: white;
 }
 
+.grow {
+  flex-grow: 1;
+}
+
+.fixed {
+  flex-grow: 0;
+}
+
 .sheet-data {
   width: 100;
   text-align: left;

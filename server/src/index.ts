@@ -1,4 +1,4 @@
-import { getSheetData } from './api/sheets';
+import { getSheetData, setSheetData, getSheet } from './api/sheets';
 import type { SheetData } from '../../types/globals';
 import { getCalendarEvents, getNextEvent } from './api/calendar';
 
@@ -11,8 +11,9 @@ const hostname = '0.0.0.0';
 
 // Serve static files from the 'public' directory
 app.use(express.static('public'));
+app.use(express.json());
 app.use(cors({
-  origin: 'http://localhost:3001' // Allow requests only from this origin
+  origin: '*', // 'http://localhost:3001' // Allow requests only from this origin
 }));
 
 // app.get('/', (req, res) => {
@@ -38,6 +39,16 @@ app.get('/sheet-data/:type', async (req, res) => {
   }
 });
 
+app.post('/update-sheet-data', async (req, res) => {
+  try {
+    const sheetItem: SheetItem = req.body.data;
+    const response = await setSheetData('dog', sheetItem);
+    res.send(response);
+  } catch (error) {
+    res.status(500).send('Error updating sheet');
+  }
+});
+
 app.get('/calendar-events', async (req, res) => {
   console.log('lets get the calendar events');
   try {
@@ -49,12 +60,30 @@ app.get('/calendar-events', async (req, res) => {
 });
 
 app.get('/calendar-next-event', async (req, res) => {
-  console.log('lets get the calendar events');
+  console.log('lets get the next calendar event');
   try {
     const response = await getNextEvent();
     res.send(response);
   } catch (error) {
     res.status(500).send('Error fetching events from Google Calendar');
+  }
+});
+
+app.get('/test', async (req, res) => {
+  try {
+   
+    const sheetItem: SheetItem = {
+      Date: '11/25/2024',
+      Duration: 10,
+      Place: 'Parlor, Living Room and Kitchen',
+      Comment: 'doing very good with stay and find it',
+      Person: 'Jen',
+    }
+
+    const response = await getSheet('1sWtSyJbEAbkMJHB7JFs7p9UiUoY7ekECM2Eos-BvDgI', 'Sheet1!A1:Z100');
+    res.send(response);
+  } catch (error) {
+    res.status(500).send('Error fetching headers');
   }
 });
 

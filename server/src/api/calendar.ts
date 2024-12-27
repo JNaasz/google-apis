@@ -21,7 +21,7 @@ async function getCalendarEvents(): Promise<CalEvent[]> {
 		const response = await calendar.events.list({
 			calendarId: CALENDAR_ID,
 			timeMin: new Date().toISOString(), // Only future events
-			maxResults: 10, // Fetch upcoming events
+			maxResults: 50, // Fetch upcoming events
 			singleEvents: true,
 			orderBy: 'startTime',
 		});

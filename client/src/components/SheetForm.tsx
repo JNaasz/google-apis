@@ -13,6 +13,7 @@ function SheetForm({ onSubmit, onCancel }: SheetFormProps) {
     Duration: 0,
     Place: '',
     Comment: '',
+    Person: '',
   });
 
   const handleChange = (
