@@ -60,7 +60,7 @@ app.get('/calendar-events', async (req, res) => {
 });
 
 app.get('/calendar-next-event', async (req, res) => {
-  console.log('lets get the calendar events');
+  console.log('lets get the next calendar event');
   try {
     const response = await getNextEvent();
     res.send(response);
