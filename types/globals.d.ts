@@ -47,6 +47,7 @@ interface CalendarEventTime {
 	time: string;
 	day: string;
 	month: string;
+	weekDay: string;
 }
 
 export type { SheetData, Sheet, SheetItem, CalEvent, CalendarEventTime };

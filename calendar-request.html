@@ -76,8 +76,7 @@
 </html>
 
 <script>
-  fetch('http://localhost:2000/calendar-next-event')
-  //fetch('https://jensthing.schwaasz.com/calendar-next-event')
+  fetch('https://jensthing.schwaasz.com/calendar-next-event')
     .then((response) => response.json())
     .then((data) => {
       const eventContainer = document.getElementsByClassName('event-container')[0];
@@ -86,14 +85,14 @@
 				const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.location)}`;
         eventContainer.innerHTML = `<div class="next-event">
 					<div class="date">
-						<div class="day">17</div>
+						<div class="day">${data.date.day}</div>
 						<div class="month">${data.date.month}</div>
 					</div>
 					<div class="details">
 						<div class="next-title">Next Group Run:</div>
 						<div class="next-details">
 							<div class="where">${data.summary}</div>
-							<div class="when">${data.date.day}, ${data.date.time}</div>
+							<div class="when">${data.date.weekDay}, ${data.date.time}</div>
 							<div class="address"><a href=${mapsUrl} target="_blank">Directions</a></div>
 						</div>
 					</div>

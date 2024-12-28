@@ -13,19 +13,19 @@ function formatDate(dateStr: string): CalendarEventTime | null {
 	const time = new Intl.DateTimeFormat('en-US', optionsTime)
 		.format(date);
 
-	const optionsDay: Intl.DateTimeFormatOptions = { weekday: 'short' };
-	const day = new Intl.DateTimeFormat('en-US', optionsDay)
+	const optionsWeekDay: Intl.DateTimeFormatOptions = { weekday: 'short' };
+	const weekDay = new Intl.DateTimeFormat('en-US', optionsWeekDay)
 		.format(date);
 
-	const optionsMonthDate: Intl.DateTimeFormatOptions = { month: 'numeric', day: 'numeric' };
-	const monthDate = new Intl.DateTimeFormat('en-US', optionsMonthDate)
-		.format(date);
+
+	const optionsDay: Intl.DateTimeFormatOptions = { day: 'numeric' };
+	const day = new Intl.DateTimeFormat('en-US', optionsDay).format(date);
 
 	const optionsShortMonth: Intl.DateTimeFormatOptions = { month: 'short' };
 	const month = new Intl.DateTimeFormat('en-US', optionsShortMonth)
 		.format(date);
 
-	return { time, day, month };
+	return { time, weekDay, month, day };
 }
 
 export {
