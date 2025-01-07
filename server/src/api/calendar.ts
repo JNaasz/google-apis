@@ -1,6 +1,7 @@
 import { google } from 'googleapis';
 import { GoogleAuth } from 'google-auth-library';
 import credentials from '../secret/dtrw-credentials';
+import { formatDate } from '../lib/calendarUtil';
 import type { CalEvent } from '../../../types/globals';
 
 const auth = new GoogleAuth({
@@ -43,6 +44,13 @@ async function getNextEvent(): Promise<CalEvent | null> {
   try {
     const events = await getCalendarEvents();
     const nextEvent = events?.find(event => event.hasOwnProperty('location'));
+		if (nextEvent && nextEvent.start && nextEvent.start.dateTime) {
+			const dateData = formatDate(nextEvent.start.dateTime);
+			if (dateData) {
+				nextEvent.date = dateData;
+			}
+		}
+
     return nextEvent || null;
   } catch (error) {
     console.error('Error fetching the next event:', error);

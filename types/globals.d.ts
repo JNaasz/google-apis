@@ -33,6 +33,7 @@ declare global {
 		start?: EventDateTime;
 		end?: EventDateTime;
 		recurrence?: string[] | null;
+		date?: CalendarEventTime;
 	}
 }
 
@@ -42,4 +43,11 @@ interface EventDateTime {
   timeZone?: string | null;
 }
 
-export type { SheetData, Sheet, SheetItem, CalEvent };
+interface CalendarEventTime {
+	time: string;
+	day: string;
+	month: string;
+	weekDay: string;
+}
+
+export type { SheetData, Sheet, SheetItem, CalEvent, CalendarEventTime };

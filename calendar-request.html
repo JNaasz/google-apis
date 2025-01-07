@@ -1,0 +1,127 @@
+<html>
+  <header>
+    <style>
+      html {
+        background-color: black;
+        padding: 40px;
+      }
+
+      .event-container {
+        text-align: center;
+        width: 100%;
+        /* display: flex;
+				justify-content: center; */
+      }
+
+      .next-event {
+        background-color: white;
+        /* max-width: 450px; */
+        padding: 10px 30px 10px 25px;
+        display: inline-flex;
+        /* justify-content: space-between; */
+        border-radius: 10px;
+      }
+
+      .next-event .date {
+        padding: 4px 18px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #0f77b9;
+        border-radius: 10px;
+        color: white;
+      }
+
+      .next-event .date .day {
+        font-size: 36px;
+      }
+
+      .next-event .next-title {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+
+      .next-event .details {
+        margin-left: 30px;
+        /* margin-right: 50px; */
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        flex-grow: 1;
+        text-align: left;
+      }
+
+      .next-event .route-links {
+        display: flex;
+        width: 83px;
+        height: 83px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .next-event .route-links .route-4 {
+        margin-bottom: 5px;
+      }
+
+      .next-event .route-links a {
+        color: #0f77b9;
+      }
+    </style>
+  </header>
+  <div class="event-container">
+  </div>
+</html>
+
+<script>
+  fetch('https://jensthing.schwaasz.com/calendar-next-event')
+    .then((response) => response.json())
+    .then((data) => {
+      const eventContainer = document.getElementsByClassName('event-container')[0];
+      if (data.date && eventContainer) {
+				const location = "123 Main Street, City, State";
+				const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.location)}`;
+        eventContainer.innerHTML = `<div class="next-event">
+					<div class="date">
+						<div class="day">${data.date.day}</div>
+						<div class="month">${data.date.month}</div>
+					</div>
+					<div class="details">
+						<div class="next-title">Next Group Run:</div>
+						<div class="next-details">
+							<div class="where">${data.summary}</div>
+							<div class="when">${data.date.weekDay}, ${data.date.time}</div>
+							<div class="address"><a href=${mapsUrl} target="_blank">Directions</a></div>
+						</div>
+					</div>
+				</div>`;
+      } else {
+        eventContainer.innerHTML = 'Upcoming Event Not Available.';
+      }
+    })
+    .catch((error) => {
+      console.error('Error fetching events:', error);
+      document.getElementById('next-event').innerHTML = '';
+    });
+
+</script>
+
+<!-- 
+<div class="event-container">
+	<div class="next-event">
+		<div class="date">
+			<div class="day">17</div>
+			<div class="month">Nov</div>
+		</div>
+		<div class="details">
+			<div class="next-title">Next Group Run:</div>
+			<div class="next-details">
+				<div class="where">Elephant &amp; Company</div>
+				<div class="when">Tue, 6:00 PM</div>
+				<div class="address"><a href="https://www.google.com/maps/search/?api=1&amp;query=Elephant%20%26%20Co.%20Detroit%2C%20456%20Charlotte%20St%2C%20Detroit%2C%20MI%2048201%2C%20USA" target="_blank">Directions</a></div>
+			</div>
+		</div>
+	</div>
+</div> -->
