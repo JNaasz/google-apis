@@ -4,6 +4,12 @@ import { getCalendarEvents, getNextEvent } from './api/calendar';
 
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Define __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = Number(process.env.PORT) || 2000;
@@ -16,9 +22,14 @@ app.use(cors({
   origin: '*', // 'http://localhost:3001' // Allow requests only from this origin
 }));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-// });
+app.get('/scrape', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/build/scrape.html'));
+});
+
+app.use(express.static(path.join(__dirname, '../../client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../../client/build/index.html'));
+});
 
 app.get('/sheet-data', async (req, res) => {
   try {

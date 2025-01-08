@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Page</title>
+</head>
+<body style="text-align: center;">
+    <h1>Pull Saved Route Details From Gmapp Pedometer</h1>
+    <p>
+			To use this page, go to <a target="_blank" href="https://www.gmap-pedometer.com/">gmap-pedometer.com</a>, login in and then navigate to "ROUTES".
+			<br>
+			Open chrome inspector and copy all html within and including <span style="color: blue;">div class="bookmarksTable phone"</span>
+			<br>
+			Paste the copied html into the below textbox and click "Scrape".
+		</p>
+
+		<p>TODO: add options to download as json and csv. Add helper function to convert to csv.</p>
+		<form id="html-form" style="margin-top: 20px;">
+			<span class="error" style="visibility: hidden; display: block; margin: 0 auto;">HTML is not valid, couldn't find routes.</span>
+			<textarea name="html" placeholder="paste html here" rows="10" cols="90" style="margin-bottom: 10px;">
+			</textarea>
+			<input type="submit" value="Scrape" style="display: block; margin: 0 auto;">
+		</form>
+
+		<div id="result" style="display: none;">
+			<div></div>
+			<button>Reset</button>
+		</div>
+
+<script>
+	function showResult(result) {
+		const form = document.getElementById('html-form');
+		form.style.display = 'none';
+		const res = document.querySelector('#result');
+		res.querySelector('div').innerHTML = result;
+		res.style.display = 'block';
+	}
+
+	function scrape(e) {
+		e.preventDefault();
+		const tempDiv = document.createElement('div');
+		const form = document.getElementById('html-form');
+		tempDiv.innerHTML = form.querySelector('textarea').value;
+
+		const routes = Array.from(tempDiv.querySelectorAll('.mobile_list_entry'));
+		if (!routes) {
+			form.querySelector('.error').style.visibility = 'visible';
+		} else {
+			form.querySelector('.error').style.visibility = 'hidden';
+		}
+
+		const data = routes.map(route => {
+			const rowObj = {};
+			const rows = Array.from(route.querySelectorAll('.mobile_row'));
+			rows.forEach(r => {
+				const key = r.querySelector('.mobile_heading').innerHTML;
+				if (key === 'Name' || key === 'Distance' || key === 'Description') {
+					rowObj[key] = r.querySelector('.cell').innerHTML.replace('&nbsp;', '');
+				} else if (key === '&nbsp;') {
+					const href = r.querySelector('a').href;
+					rowObj.link = 'https://www.gmap-pedometer.com/?r=' + href.split('=')[1];
+				}
+			});
+
+			return rowObj;
+		});
+
+		showResult(JSON.stringify(data, null, 4));
+	}
+
+	document.querySelector('form').addEventListener('submit', scrape);
+
+	console.log(document.querySelector('form'));
+
+</script>
+</body>
+</html>
