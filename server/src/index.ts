@@ -22,15 +22,6 @@ app.use(cors({
   origin: '*', // 'http://localhost:3001' // Allow requests only from this origin
 }));
 
-app.get('/scrape', (req, res) => {
-  res.sendFile(path.join(__dirname, '../../client/build/scrape.html'));
-});
-
-app.use(express.static(path.join(__dirname, '../../client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '../../client/build/index.html'));
-});
-
 app.get('/sheet-data', async (req, res) => {
   try {
     const response: SheetData = await getSheetData(null);
@@ -96,6 +87,16 @@ app.get('/test', async (req, res) => {
   } catch (error) {
     res.status(500).send('Error fetching headers');
   }
+});
+
+// client UI pages
+app.get('/scrape', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/build/scrape.html'));
+});
+
+app.use(express.static(path.join(__dirname, '../../client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../../client/build/index.html'));
 });
 
 app.listen(port, hostname, () => {
