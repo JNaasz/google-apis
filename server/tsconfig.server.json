@@ -1,11 +1,15 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "target": "ESNext",
     "rootDir": "./src",
     "outDir": "./dist",
     "baseUrl": ".",
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "typeRoots": ["./node_modules/@types", "../node_modules/@types"]
   },
-  "include": ["../types", "types", "src", ],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }

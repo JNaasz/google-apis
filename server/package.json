@@ -8,7 +8,7 @@
     "start": "tsx ./src/index.ts",
     "serve": "node dist/bundle.js",
     "install:prod": "npm ci --only=production",
-    "start:prod": "npm install && npm run build && npm run serve"
+    "start:prod": "NODE_ENV=production && npm run build && NODE_ENV=production && npm run serve"
   },
   "main": "./src/index.ts",
   "dependencies": {
